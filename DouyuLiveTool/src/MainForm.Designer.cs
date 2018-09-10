@@ -29,21 +29,24 @@
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpRegisterMovie = new System.Windows.Forms.TabPage();
+            this.tpRoomMovie = new System.Windows.Forms.TabPage();
             this.tpMovieAlias = new System.Windows.Forms.TabPage();
             this.tpMovieBlacklist = new System.Windows.Forms.TabPage();
-            this.tpRoomMovie = new System.Windows.Forms.TabPage();
             this.tpAppSettings = new System.Windows.Forms.TabPage();
+            this.tpAdvertMovie = new System.Windows.Forms.TabPage();
             this.newMoviePanel1 = new Douyu.src.MovieRegister();
             this.roomMoviePanel1 = new Douyu.src.RoomMoviePanel();
             this.movieAliasPanel1 = new Douyu.src.MovieAliasPanel();
             this.movieBlacklistPanel1 = new Douyu.src.MovieBlacklistPanel();
             this.appSettingPanel1 = new Douyu.src.AppSettingPanel();
+            this.advertMoviePanel1 = new Douyu.src.AdvertMoviePanel();
             this.tabControl.SuspendLayout();
             this.tpRegisterMovie.SuspendLayout();
+            this.tpRoomMovie.SuspendLayout();
             this.tpMovieAlias.SuspendLayout();
             this.tpMovieBlacklist.SuspendLayout();
-            this.tpRoomMovie.SuspendLayout();
             this.tpAppSettings.SuspendLayout();
+            this.tpAdvertMovie.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -52,6 +55,7 @@
             this.tabControl.Controls.Add(this.tpRegisterMovie);
             this.tabControl.Controls.Add(this.tpRoomMovie);
             this.tabControl.Controls.Add(this.tpMovieAlias);
+            this.tabControl.Controls.Add(this.tpAdvertMovie);
             this.tabControl.Controls.Add(this.tpMovieBlacklist);
             this.tabControl.Controls.Add(this.tpAppSettings);
             this.tabControl.Location = new System.Drawing.Point(12, 12);
@@ -71,6 +75,17 @@
             this.tpRegisterMovie.TabIndex = 0;
             this.tpRegisterMovie.Text = "注册新电影";
             this.tpRegisterMovie.UseVisualStyleBackColor = true;
+            // 
+            // tpRoomMovie
+            // 
+            this.tpRoomMovie.Controls.Add(this.roomMoviePanel1);
+            this.tpRoomMovie.Location = new System.Drawing.Point(4, 25);
+            this.tpRoomMovie.Name = "tpRoomMovie";
+            this.tpRoomMovie.Padding = new System.Windows.Forms.Padding(3);
+            this.tpRoomMovie.Size = new System.Drawing.Size(952, 527);
+            this.tpRoomMovie.TabIndex = 3;
+            this.tpRoomMovie.Text = "房间电影";
+            this.tpRoomMovie.UseVisualStyleBackColor = true;
             // 
             // tpMovieAlias
             // 
@@ -94,17 +109,6 @@
             this.tpMovieBlacklist.Text = "电影黑名单";
             this.tpMovieBlacklist.UseVisualStyleBackColor = true;
             // 
-            // tpRoomMovie
-            // 
-            this.tpRoomMovie.Controls.Add(this.roomMoviePanel1);
-            this.tpRoomMovie.Location = new System.Drawing.Point(4, 25);
-            this.tpRoomMovie.Name = "tpRoomMovie";
-            this.tpRoomMovie.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRoomMovie.Size = new System.Drawing.Size(952, 527);
-            this.tpRoomMovie.TabIndex = 3;
-            this.tpRoomMovie.Text = "房间电影";
-            this.tpRoomMovie.UseVisualStyleBackColor = true;
-            // 
             // tpAppSettings
             // 
             this.tpAppSettings.Controls.Add(this.appSettingPanel1);
@@ -114,6 +118,17 @@
             this.tpAppSettings.TabIndex = 4;
             this.tpAppSettings.Text = "程式设置";
             this.tpAppSettings.UseVisualStyleBackColor = true;
+            // 
+            // tpAdvertMovie
+            // 
+            this.tpAdvertMovie.Controls.Add(this.advertMoviePanel1);
+            this.tpAdvertMovie.Location = new System.Drawing.Point(4, 25);
+            this.tpAdvertMovie.Name = "tpAdvertMovie";
+            this.tpAdvertMovie.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAdvertMovie.Size = new System.Drawing.Size(952, 527);
+            this.tpAdvertMovie.TabIndex = 5;
+            this.tpAdvertMovie.Text = "广告设置";
+            this.tpAdvertMovie.UseVisualStyleBackColor = true;
             // 
             // newMoviePanel1
             // 
@@ -155,6 +170,14 @@
             this.appSettingPanel1.Size = new System.Drawing.Size(952, 527);
             this.appSettingPanel1.TabIndex = 0;
             // 
+            // advertMoviePanel1
+            // 
+            this.advertMoviePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.advertMoviePanel1.Location = new System.Drawing.Point(3, 3);
+            this.advertMoviePanel1.Name = "advertMoviePanel1";
+            this.advertMoviePanel1.Size = new System.Drawing.Size(946, 521);
+            this.advertMoviePanel1.TabIndex = 0;
+            // 
             // MianForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,10 +190,11 @@
             this.Text = "Douyu Live Tool";
             this.tabControl.ResumeLayout(false);
             this.tpRegisterMovie.ResumeLayout(false);
+            this.tpRoomMovie.ResumeLayout(false);
             this.tpMovieAlias.ResumeLayout(false);
             this.tpMovieBlacklist.ResumeLayout(false);
-            this.tpRoomMovie.ResumeLayout(false);
             this.tpAppSettings.ResumeLayout(false);
+            this.tpAdvertMovie.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -188,6 +212,8 @@
         private src.RoomMoviePanel roomMoviePanel1;
         private System.Windows.Forms.TabPage tpAppSettings;
         private src.AppSettingPanel appSettingPanel1;
+        private System.Windows.Forms.TabPage tpAdvertMovie;
+        private src.AdvertMoviePanel advertMoviePanel1;
     }
 }
 

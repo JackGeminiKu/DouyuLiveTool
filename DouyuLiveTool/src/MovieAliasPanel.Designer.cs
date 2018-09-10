@@ -41,7 +41,7 @@
             this.lbMovieAliases.FormattingEnabled = true;
             this.lbMovieAliases.Location = new System.Drawing.Point(90, 285);
             this.lbMovieAliases.Name = "lbMovieAliases";
-            this.lbMovieAliases.Size = new System.Drawing.Size(889, 199);
+            this.lbMovieAliases.Size = new System.Drawing.Size(844, 199);
             this.lbMovieAliases.TabIndex = 13;
             // 
             // btnAddMovieAlias
@@ -66,7 +66,7 @@
             this.lbMovies.FormattingEnabled = true;
             this.lbMovies.Location = new System.Drawing.Point(90, 45);
             this.lbMovies.Name = "lbMovies";
-            this.lbMovies.Size = new System.Drawing.Size(889, 199);
+            this.lbMovies.Size = new System.Drawing.Size(844, 199);
             this.lbMovies.TabIndex = 10;
             this.lbMovies.SelectedIndexChanged += new System.EventHandler(this.lbMovies_SelectedIndexChanged);
             // 
@@ -108,7 +108,7 @@
             this.Controls.Add(this.txtMovieName);
             this.Controls.Add(this.label1);
             this.Name = "MovieAliasPanel";
-            this.Size = new System.Drawing.Size(1015, 504);
+            this.Size = new System.Drawing.Size(952, 527);
             this.ResumeLayout(false);
             this.PerformLayout();
 

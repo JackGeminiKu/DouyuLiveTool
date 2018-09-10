@@ -32,11 +32,12 @@
             this.txtMovieFolder = new System.Windows.Forms.TextBox();
             this.btnSelectFolder = new System.Windows.Forms.Button();
             this.lbMovies = new System.Windows.Forms.ListBox();
+            this.labelWarning = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnRegisterMovie
             // 
-            this.btnRegisterMovie.Location = new System.Drawing.Point(683, 443);
+            this.btnRegisterMovie.Location = new System.Drawing.Point(847, 488);
             this.btnRegisterMovie.Name = "btnRegisterMovie";
             this.btnRegisterMovie.Size = new System.Drawing.Size(75, 23);
             this.btnRegisterMovie.TabIndex = 0;
@@ -75,20 +76,31 @@
             this.lbMovies.FormattingEnabled = true;
             this.lbMovies.Location = new System.Drawing.Point(90, 39);
             this.lbMovies.Name = "lbMovies";
-            this.lbMovies.Size = new System.Drawing.Size(668, 394);
+            this.lbMovies.Size = new System.Drawing.Size(832, 433);
             this.lbMovies.TabIndex = 4;
+            // 
+            // labelWarning
+            // 
+            this.labelWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.ForeColor = System.Drawing.Color.Red;
+            this.labelWarning.Location = new System.Drawing.Point(87, 488);
+            this.labelWarning.Name = "labelWarning";
+            this.labelWarning.Size = new System.Drawing.Size(683, 23);
+            this.labelWarning.TabIndex = 14;
+            this.labelWarning.Text = "手动核对黑名单, 确保加入的电影不在黑名单中!!!";
             // 
             // MovieRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelWarning);
             this.Controls.Add(this.lbMovies);
             this.Controls.Add(this.btnSelectFolder);
             this.Controls.Add(this.txtMovieFolder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegisterMovie);
             this.Name = "MovieRegister";
-            this.Size = new System.Drawing.Size(783, 480);
+            this.Size = new System.Drawing.Size(952, 527);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +113,6 @@
         private System.Windows.Forms.TextBox txtMovieFolder;
         private System.Windows.Forms.Button btnSelectFolder;
         private System.Windows.Forms.ListBox lbMovies;
+        private System.Windows.Forms.Label labelWarning;
     }
 }

@@ -53,12 +53,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\AdvertMoviePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\AdvertMoviePanel.Designer.cs">
+      <DependentUpon>AdvertMoviePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\AppSettingPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\AppSettingPanel.Designer.cs">
       <DependentUpon>AppSettingPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\AppSettings.cs" />
     <Compile Include="src\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +98,9 @@
     <Compile Include="src\RoomMoviePanel.Designer.cs">
       <DependentUpon>RoomMoviePanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="src\AdvertMoviePanel.resx">
+      <DependentUpon>AdvertMoviePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\AppSettingPanel.resx">
       <DependentUpon>AppSettingPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,7 +140,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
