@@ -20,14 +20,16 @@ namespace Douyu.src
         public MovieRegister()
         {
             InitializeComponent();
+            ShowRegisteredMovies("");
         }
 
         private void btnRegisterMovie_Click(object sender, EventArgs e)
         {
             var newMovieCount = 0;
             var oldMovieCount = 0;
-            var totalMovieCount = lbMovies.Items.Count;
-            ImportNewMovies(lbMovies.Items, out newMovieCount, out oldMovieCount);
+            var totalMovieCount = lbSearchedMovies.Items.Count;
+            ImportNewMovies(lbSearchedMovies.Items, out newMovieCount, out oldMovieCount);
+            ShowRegisteredMovies("");
             MessageBox.Show(string.Format("一共找到电影{0}部, 其中导入新电影{1}部, 发现旧电影{2}部!",
                     totalMovieCount, newMovieCount, oldMovieCount),
                 "导入电影", MessageBoxButtons.OK);
@@ -60,9 +62,12 @@ namespace Douyu.src
 
                 txtMovieFolder.Text = folderBrowser.SelectedPath;
                 var movies = SearchMovies(folderBrowser.SelectedPath);
-                lbMovies.Items.AddRange(movies.ToArray());
+
+                lbSearchedMovies.Items.Clear();
+                lbSearchedMovies.Items.AddRange(movies.ToArray());
+                lblSearchedMovieCount.Text = string.Format("共找到电影{0}部!",movies.Count());
             } finally {
-                btnRegisterMovie.Enabled = lbMovies.Items.Count > 0;
+                btnRegisterMovie.Enabled = lbSearchedMovies.Items.Count > 0;
                 this.Enabled = true;
             }
         }
@@ -83,6 +88,31 @@ namespace Douyu.src
             }
 
             return movies;
+        }
+
+        private void btnSearchOldMovie_Click(object sender, EventArgs e)
+        {
+            ShowRegisteredMovies(txtCondition.Text);
+        }
+
+        void ShowRegisteredMovies(string condition)
+        {
+            var sql = "select * from Movie";
+            if (condition.Trim().Length != 0)
+                sql += string.Format(" where MovieFile like '%{0}%'", condition);
+            sql += " order by MovieFile";
+            var movies = _connection.Query<dynamic>(sql);
+
+            lbRegisteredMovies.Items.Clear();
+            foreach (var movie in movies) {
+                lbRegisteredMovies.Items.Add(movie.MovieFile);
+            }
+            lblRegisterMovieCount.Text = string.Format("共有注册电影{0}部!", movies.Count());
+        }
+
+        private void txtCondition_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r') ShowRegisteredMovies(txtCondition.Text);
         }
     }
 }

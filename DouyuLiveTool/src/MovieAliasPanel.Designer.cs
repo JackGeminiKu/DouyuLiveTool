@@ -29,11 +29,12 @@
         {
             this.lbMovieAliases = new System.Windows.Forms.ListBox();
             this.btnAddMovieAlias = new System.Windows.Forms.Button();
-            this.txtMovieAlias = new System.Windows.Forms.TextBox();
+            this.txtAliasName = new System.Windows.Forms.TextBox();
             this.lbMovies = new System.Windows.Forms.ListBox();
             this.btnFindMovie = new System.Windows.Forms.Button();
             this.txtMovieName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbMovieAliasList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lbMovieAliases
@@ -41,7 +42,7 @@
             this.lbMovieAliases.FormattingEnabled = true;
             this.lbMovieAliases.Location = new System.Drawing.Point(90, 285);
             this.lbMovieAliases.Name = "lbMovieAliases";
-            this.lbMovieAliases.Size = new System.Drawing.Size(844, 199);
+            this.lbMovieAliases.Size = new System.Drawing.Size(439, 199);
             this.lbMovieAliases.TabIndex = 13;
             // 
             // btnAddMovieAlias
@@ -54,19 +55,19 @@
             this.btnAddMovieAlias.UseVisualStyleBackColor = true;
             this.btnAddMovieAlias.Click += new System.EventHandler(this.btnAddMovieAlias_Click);
             // 
-            // txtMovieAlias
+            // txtAliasName
             // 
-            this.txtMovieAlias.Location = new System.Drawing.Point(90, 256);
-            this.txtMovieAlias.Name = "txtMovieAlias";
-            this.txtMovieAlias.Size = new System.Drawing.Size(198, 20);
-            this.txtMovieAlias.TabIndex = 11;
+            this.txtAliasName.Location = new System.Drawing.Point(90, 256);
+            this.txtAliasName.Name = "txtAliasName";
+            this.txtAliasName.Size = new System.Drawing.Size(198, 20);
+            this.txtAliasName.TabIndex = 11;
             // 
             // lbMovies
             // 
             this.lbMovies.FormattingEnabled = true;
             this.lbMovies.Location = new System.Drawing.Point(90, 45);
             this.lbMovies.Name = "lbMovies";
-            this.lbMovies.Size = new System.Drawing.Size(844, 199);
+            this.lbMovies.Size = new System.Drawing.Size(439, 199);
             this.lbMovies.TabIndex = 10;
             this.lbMovies.SelectedIndexChanged += new System.EventHandler(this.lbMovies_SelectedIndexChanged);
             // 
@@ -96,13 +97,22 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "电影名字";
             // 
+            // lbMovieAliasList
+            // 
+            this.lbMovieAliasList.FormattingEnabled = true;
+            this.lbMovieAliasList.Location = new System.Drawing.Point(559, 45);
+            this.lbMovieAliasList.Name = "lbMovieAliasList";
+            this.lbMovieAliasList.Size = new System.Drawing.Size(368, 446);
+            this.lbMovieAliasList.TabIndex = 14;
+            // 
             // MovieAliasPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbMovieAliasList);
             this.Controls.Add(this.lbMovieAliases);
             this.Controls.Add(this.btnAddMovieAlias);
-            this.Controls.Add(this.txtMovieAlias);
+            this.Controls.Add(this.txtAliasName);
             this.Controls.Add(this.lbMovies);
             this.Controls.Add(this.btnFindMovie);
             this.Controls.Add(this.txtMovieName);
@@ -118,10 +128,11 @@
 
         private System.Windows.Forms.ListBox lbMovieAliases;
         private System.Windows.Forms.Button btnAddMovieAlias;
-        private System.Windows.Forms.TextBox txtMovieAlias;
+        private System.Windows.Forms.TextBox txtAliasName;
         private System.Windows.Forms.ListBox lbMovies;
         private System.Windows.Forms.Button btnFindMovie;
         private System.Windows.Forms.TextBox txtMovieName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lbMovieAliasList;
     }
 }

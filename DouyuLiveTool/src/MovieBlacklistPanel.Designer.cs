@@ -28,42 +28,44 @@
         private void InitializeComponent()
         {
             this.lbMovieBlacklist = new System.Windows.Forms.ListBox();
-            this.lbMovies = new System.Windows.Forms.ListBox();
-            this.btnFind = new System.Windows.Forms.Button();
+            this.lbSearchedMovies = new System.Windows.Forms.ListBox();
+            this.btnSearchMovie = new System.Windows.Forms.Button();
             this.txtMovieName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtSearchedBlacklist = new System.Windows.Forms.TextBox();
             this.btnSearchBlacklist = new System.Windows.Forms.Button();
+            this.btnImportToBlacklist = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbMovieBlacklist
             // 
             this.lbMovieBlacklist.FormattingEnabled = true;
-            this.lbMovieBlacklist.Location = new System.Drawing.Point(494, 50);
+            this.lbMovieBlacklist.Location = new System.Drawing.Point(523, 50);
             this.lbMovieBlacklist.Name = "lbMovieBlacklist";
-            this.lbMovieBlacklist.Size = new System.Drawing.Size(428, 459);
+            this.lbMovieBlacklist.Size = new System.Drawing.Size(403, 459);
             this.lbMovieBlacklist.TabIndex = 9;
             this.lbMovieBlacklist.DoubleClick += new System.EventHandler(this.lbMovieBlacklist_DoubleClick);
             // 
-            // lbMovies
+            // lbSearchedMovies
             // 
-            this.lbMovies.FormattingEnabled = true;
-            this.lbMovies.Location = new System.Drawing.Point(26, 50);
-            this.lbMovies.Name = "lbMovies";
-            this.lbMovies.Size = new System.Drawing.Size(428, 459);
-            this.lbMovies.TabIndex = 8;
-            this.lbMovies.DoubleClick += new System.EventHandler(this.lbMovies_DoubleClick);
+            this.lbSearchedMovies.FormattingEnabled = true;
+            this.lbSearchedMovies.Location = new System.Drawing.Point(26, 50);
+            this.lbSearchedMovies.Name = "lbSearchedMovies";
+            this.lbSearchedMovies.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbSearchedMovies.Size = new System.Drawing.Size(403, 459);
+            this.lbSearchedMovies.TabIndex = 8;
+            this.lbSearchedMovies.DoubleClick += new System.EventHandler(this.lbSearchedMovies_DoubleClick);
             // 
-            // btnFind
+            // btnSearchMovie
             // 
-            this.btnFind.Location = new System.Drawing.Point(264, 12);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 7;
-            this.btnFind.Text = "查找";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.btnSearchMovie.Location = new System.Drawing.Point(264, 12);
+            this.btnSearchMovie.Name = "btnSearchMovie";
+            this.btnSearchMovie.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchMovie.TabIndex = 7;
+            this.btnSearchMovie.Text = "查找";
+            this.btnSearchMovie.UseVisualStyleBackColor = true;
+            this.btnSearchMovie.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // txtMovieName
             // 
@@ -85,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(494, 22);
+            this.label2.Location = new System.Drawing.Point(523, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 10;
@@ -93,7 +95,7 @@
             // 
             // txtSearchedBlacklist
             // 
-            this.txtSearchedBlacklist.Location = new System.Drawing.Point(548, 15);
+            this.txtSearchedBlacklist.Location = new System.Drawing.Point(577, 15);
             this.txtSearchedBlacklist.Name = "txtSearchedBlacklist";
             this.txtSearchedBlacklist.Size = new System.Drawing.Size(173, 20);
             this.txtSearchedBlacklist.TabIndex = 11;
@@ -101,7 +103,7 @@
             // 
             // btnSearchBlacklist
             // 
-            this.btnSearchBlacklist.Location = new System.Drawing.Point(727, 12);
+            this.btnSearchBlacklist.Location = new System.Drawing.Point(756, 12);
             this.btnSearchBlacklist.Name = "btnSearchBlacklist";
             this.btnSearchBlacklist.Size = new System.Drawing.Size(75, 23);
             this.btnSearchBlacklist.TabIndex = 12;
@@ -109,16 +111,27 @@
             this.btnSearchBlacklist.UseVisualStyleBackColor = true;
             this.btnSearchBlacklist.Click += new System.EventHandler(this.btnSearchBlacklist_Click);
             // 
+            // btnImportToBlacklist
+            // 
+            this.btnImportToBlacklist.Location = new System.Drawing.Point(439, 249);
+            this.btnImportToBlacklist.Name = "btnImportToBlacklist";
+            this.btnImportToBlacklist.Size = new System.Drawing.Size(75, 23);
+            this.btnImportToBlacklist.TabIndex = 13;
+            this.btnImportToBlacklist.Text = "添加到黑名单";
+            this.btnImportToBlacklist.UseVisualStyleBackColor = true;
+            this.btnImportToBlacklist.Click += new System.EventHandler(this.btnImportToBlacklist_Click);
+            // 
             // MovieBlacklistPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnImportToBlacklist);
             this.Controls.Add(this.btnSearchBlacklist);
             this.Controls.Add(this.txtSearchedBlacklist);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbMovieBlacklist);
-            this.Controls.Add(this.lbMovies);
-            this.Controls.Add(this.btnFind);
+            this.Controls.Add(this.lbSearchedMovies);
+            this.Controls.Add(this.btnSearchMovie);
             this.Controls.Add(this.txtMovieName);
             this.Controls.Add(this.label1);
             this.Name = "MovieBlacklistPanel";
@@ -132,12 +145,13 @@
         #endregion
 
         private System.Windows.Forms.ListBox lbMovieBlacklist;
-        private System.Windows.Forms.ListBox lbMovies;
-        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.ListBox lbSearchedMovies;
+        private System.Windows.Forms.Button btnSearchMovie;
         private System.Windows.Forms.TextBox txtMovieName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSearchedBlacklist;
         private System.Windows.Forms.Button btnSearchBlacklist;
+        private System.Windows.Forms.Button btnImportToBlacklist;
     }
 }

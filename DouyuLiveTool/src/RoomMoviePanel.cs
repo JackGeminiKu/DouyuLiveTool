@@ -43,6 +43,8 @@ namespace Douyu.src
             foreach (var movie in _roomMovies) {
                 lbRoomMovies.Items.Add(string.Format("{0} - {1}", movie.RoomId, movie.MovieFile));
             }
+
+            lblRoomMovieCount.Text = string.Format("房间内共有{0}部电影!",_roomMovies.Count());
         }
 
         IEnumerable<dynamic> _roomMovies;
@@ -60,6 +62,8 @@ namespace Douyu.src
             foreach (var movie in _searchedMovies) {
                 lbSearchedMovies.Items.Add(movie.MovieFile);
             }
+
+            lblSearchedMovieCount.Text = string.Format("共找到{0}部电影!",_searchedMovies.Count());
         }
 
         IEnumerable<dynamic> _searchedMovies;

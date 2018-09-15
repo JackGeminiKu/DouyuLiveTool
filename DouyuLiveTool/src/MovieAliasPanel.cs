@@ -20,7 +20,8 @@ namespace Douyu.src
         {
             InitializeComponent();
             if (Debugger.IsAttached)
-                txtMovieName.Text = "功夫";
+                txtMovieName.Text = "大话西游1";
+            ShowMovieAliasList();
         }
 
         IEnumerable<dynamic> _movies;
@@ -52,32 +53,43 @@ namespace Douyu.src
 
             lbMovieAliases.Items.Clear();
             foreach (var alias in movieAliases) {
-                lbMovieAliases.Items.Add(alias.MovieAlias);
+                lbMovieAliases.Items.Add(alias.AliasName);
             }
         }
 
         private void btnAddMovieAlias_Click(object sender, EventArgs e)
         {
             // 别名不能为空
-            if (txtMovieAlias.Text.Trim().Length == 0) {
+            if (txtAliasName.Text.Trim().Length == 0) {
                 MessageBox.Show("别名不能为空", "检查别名");
                 return;
             }
 
             // 别名是否已经存在?
-            var count = _connection.ExecuteScalar<int>("select * from MovieAlias where MovieId = @MovieId and MovieAlias = @MovieAlias",
-                new { MovieId = SelectedMovieId, MovieAlias = txtMovieAlias.Text });
+            var count = _connection.ExecuteScalar<int>("select * from MovieAlias where MovieId = @MovieId and AliasName = @AliasName",
+                new { MovieId = SelectedMovieId, AliasName = txtAliasName.Text });
             if (count != 0) {
                 MessageBox.Show("该别名已经存在", "检查别名");
                 return;
             }
 
             // 添加别名
-            _connection.Execute("insert into MovieAlias(MovieId, MovieAlias) values(@MovieId, @MovieAlias)",
-                new { MovieId = SelectedMovieId, MovieAlias = txtMovieAlias.Text.Trim() });
+            _connection.Execute("insert into MovieAlias(MovieId, AliasName) values(@MovieId, @AliasName)",
+                new { MovieId = SelectedMovieId, AliasName = txtAliasName.Text.Trim() });
 
             // 更新别名显示
             ShowMovieAliases(SelectedMovieId);
+            ShowMovieAliasList();
+        }
+
+        void ShowMovieAliasList()
+        {
+            var movies = _connection.Query<dynamic>("select Movie.MovieName, MovieAlias.AliasName from MovieAlias " +
+                "inner join Movie on MovieAlias.MovieId = Movie.Id");
+            lbMovieAliasList.Items.Clear();
+            foreach (var movie in movies) {
+                lbMovieAliasList.Items.Add(string.Format("{0}\t{1}", movie.MovieName, movie.AliasName));
+            }
         }
 
         int SelectedMovieId { get { return _movies.ElementAt(lbMovies.SelectedIndex).Id; } }

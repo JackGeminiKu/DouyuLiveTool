@@ -46,33 +46,55 @@ namespace Douyu.src
             if (searchedMovie.Trim().Length != 0)
                 sql += string.Format(" where MovieFile like '%{0}%'", searchedMovie);
             _movies = _connection.Query<dynamic>(sql);
-            lbMovies.Items.Clear();
+            lbSearchedMovies.Items.Clear();
             foreach (var movie in _movies) {
-                lbMovies.Items.Add(movie.MovieFile);
+                lbSearchedMovies.Items.Add(movie.MovieFile);
             }
         }
 
-        private void lbMovies_DoubleClick(object sender, EventArgs e)
+        private void lbSearchedMovies_DoubleClick(object sender, EventArgs e)
         {
-            if (lbMovies.SelectedIndex < 0) return;
-
-            var movie = _movies.ElementAt(lbMovies.SelectedIndex);
-            var count = _connection.ExecuteScalar<int>("select * from MovieBlacklist where MovieId = @MovieId",
-                new { MovieId = movie.Id });
-            if (count != 0) {
-                MessageBox.Show("黑名单中已经有这部电影了", "黑名单");
-                return;
-            }
+            if (lbSearchedMovies.SelectedIndex < 0) return;
 
             var passwordBox = new PasswordBox();
-            if (passwordBox.Show("确定要把{0}添加到黑名单?", movie.MovieFile) == DialogResult.Cancel)
+            if (passwordBox.Show("确定要添加到黑名单?") == DialogResult.Cancel)
                 return;
             if (passwordBox.Password != "123456") {
                 MessageBox.Show("密码错误", "添加黑名单");
                 return;
             }
-            _connection.Execute("insert into MovieBlacklist(MovieId) values(@MovieId)", new { MovieId = movie.Id });
+            ImportToBlacklist(lbSearchedMovies.SelectedIndex);
             ShowMovieBlacklist(txtSearchedBlacklist.Text);
+        }
+
+        private void btnImportToBlacklist_Click(object sender, EventArgs e)
+        {
+            var passwordBox = new PasswordBox();
+            if (passwordBox.Show("确定添加到黑名单?") == DialogResult.Cancel)
+                return;
+            if (passwordBox.Password != "123456") {
+                MessageBox.Show("密码错误", "添加黑名单");
+                return;
+            }
+
+            foreach (var i in lbSearchedMovies.SelectedIndices) {
+                ImportToBlacklist((int)i);
+            }
+            ShowMovieBlacklist(txtSearchedBlacklist.Text);
+            MessageBox.Show("导入完成!", "导入黑名单");
+        }
+
+        void ImportToBlacklist(int movieIndex)
+        {
+            var movie = _movies.ElementAt(movieIndex);
+            var count = _connection.ExecuteScalar<int>("select * from MovieBlacklist where MovieId = @MovieId",
+                new { MovieId = movie.Id });
+            if (count != 0) {
+                MessageBox.Show(string.Format("黑名单中已经有{0}了, 请不要重复导入!", movie.MovieName), "黑名单");
+                return;
+            }
+
+            _connection.Execute("insert into MovieBlacklist(MovieId) values(@MovieId)", new { MovieId = movie.Id });
         }
 
         void ShowMovieBlacklist(string searchedWord)
